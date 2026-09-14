@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Cube Partners - design tokens
+   Source: Figma "Cube Partners" > New Design > Home (node 1022:6112)
+   Tailwind v4 is configured in CSS. There is no tailwind.config.js; every
+   token below becomes a utility (bg-brand, font-display, text-eyebrow, ...).
+   ========================================================================= */
+
+@theme {
+  /* ---------- Colours ----------
+     Figma variables: P3 = #FFFFFF, Accents/Orange = #FF8D28.
+     Everything else is a raw fill in the design, named here by role.
+     Alpha tints in the design are the ink colour at reduced opacity, e.g.
+     rgba(20,17,16,.6) -> text-ink/60, rgba(20,17,16,.15) -> border-ink/15,
+     rgba(20,17,16,.1) -> bg-ink/10, rgba(243,239,239,.14) -> border-surface/14,
+     rgba(255,255,255,.9) -> bg-white/90. */
+  --color-brand: #a61e23;             /* Cube red: CTAs, eyebrows, hero rule */
+  --color-brand-foreground: #fefbfb;  /* text on brand red */
+  --color-ink: #141110;               /* headings, body text, dark borders */
+  --color-surface: #f3efef;           /* warm grey section + footer background */
+  --color-surface-border: #dad6d6;    /* footer top border */
+  --color-white: #ffffff;             /* Figma variable P3 */
+  --color-accent-orange: #ff8d28;     /* Figma variable Accents/Orange */
+  --color-ink-muted: #655f5e;         /* secondary text in the Client Area portal preview */
+  --color-surface-light: #f8f6f6;     /* avatar and icon tile background in the portal preview */
+
+  /* ---------- Font families ----------
+     Loaded in app/layout.tsx via next/font and exposed as CSS variables. */
+  --font-display: var(--font-outfit), "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* ---------- Type scale ----------
+     text-<name> sets size, line-height, letter-spacing and weight together.
+     Display styles use font-display (Outfit); body styles use font-sans (DM Sans). */
+  --text-display: 7rem;                        /* 112px hero H1, uppercase */
+  --text-display--line-height: 0.9;
+  --text-display--letter-spacing: -0.035em;
+  --text-display--font-weight: 800;
+
+  --text-display-sm: 6rem;                     /* 96px inner-page H1, uppercase */
+  --text-display-sm--line-height: 0.88;
+  --text-display-sm--letter-spacing: -0.035em;
+  --text-display-sm--font-weight: 800;
+
+  --text-wordmark: 11rem;                      /* 176px footer "CUBE" watermark, ink/5 */
+  --text-wordmark--line-height: 0.8;
+  --text-wordmark--letter-spacing: -0.05em;
+  --text-wordmark--font-weight: 900;
+
+  --text-h2: 4.5rem;                           /* 72px section headings, uppercase */
+  --text-h2--line-height: 0.9;
+  --text-h2--letter-spacing: -0.035em;
+  --text-h2--font-weight: 800;
+
+  --text-stat: 4.5rem;                         /* 72px statistics: 500+, 120M, 98% */
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.05em;
+  --text-stat--font-weight: 900;
+
+  --text-h2-sm: 3rem;                          /* 48px "Why partner with Cube?", uppercase */
+  --text-h2-sm--line-height: 0.95;
+  --text-h2-sm--letter-spacing: -0.035em;
+  --text-h2-sm--font-weight: 800;
+
+  --text-h2-md: 3.75rem;                       /* 60px section headings (platforms, FAQ), uppercase */
+  --text-h2-md--line-height: 0.95;
+  --text-h2-md--letter-spacing: -0.035em;
+  --text-h2-md--font-weight: 800;
+
+  --text-statement: 3rem;                      /* 48px light mission statement */
+  --text-statement--line-height: 1.15;
+  --text-statement--letter-spacing: -0.025em;
+  --text-statement--font-weight: 300;
+
+  --text-h3: 1.5rem;                           /* 24px service card titles, uppercase */
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.035em;
+  --text-h3--font-weight: 800;
+
+  --text-h3-lg: 2.25rem;                       /* 36px team member name, uppercase */
+  --text-h3-lg--line-height: 1;
+  --text-h3-lg--letter-spacing: -0.035em;
+  --text-h3-lg--font-weight: 800;
+
+  --text-h4: 1.25rem;                          /* 20px sector and benefit titles, uppercase */
+  --text-h4--line-height: 1.25;
+  --text-h4--letter-spacing: -0.035em;
+  --text-h4--font-weight: 800;
+
+  --text-h5: 1.125rem;                         /* 18px contact detail titles, uppercase */
+  --text-h5--line-height: 1.5556;
+  --text-h5--letter-spacing: -0.035em;
+  --text-h5--font-weight: 800;
+
+  --text-numeral: 2.25rem;                     /* 36px card index "01", ink/15 */
+  --text-numeral--line-height: 1.1111;
+  --text-numeral--font-weight: 900;
+
+  --text-numeral-sm: 1.875rem;                 /* 30px card index "01", opacity 20% */
+  --text-numeral-sm--line-height: 1.2;
+  --text-numeral-sm--font-weight: 900;
+
+  --text-numeral-lg: 3rem;                     /* 48px process step number, brand */
+  --text-numeral-lg--line-height: 1;
+  --text-numeral-lg--font-weight: 900;
+
+  --text-lead: 1.125rem;                       /* 18px hero paragraph, DM Sans Medium, ink/75 */
+  --text-lead--line-height: 1.375;
+  --text-lead--font-weight: 500;
+
+  --text-label-lg: 1.125rem;                   /* 18px "Central Manchester" value, Outfit Bold */
+  --text-label-lg--line-height: 1.375;
+  --text-label-lg--font-weight: 700;
+
+  --text-body: 0.875rem;                       /* 14px / 28px paragraphs, ink/60 or ink/70 */
+  --text-body--line-height: 2;
+
+  --text-body-tight: 0.875rem;                 /* 14px / 24px card copy */
+  --text-body-tight--line-height: 1.7143;
+
+  --text-small: 0.875rem;                      /* 14px / 20px footer lists */
+  --text-small--line-height: 1.4286;
+
+  --text-eyebrow: 0.7rem;                      /* 11.2px section labels, uppercase, brand */
+  --text-eyebrow--line-height: 1.5;
+  --text-eyebrow--letter-spacing: 0.28em;
+  --text-eyebrow--font-weight: 700;
+
+  --text-button: 0.75rem;                      /* 12px button labels, uppercase */
+  --text-button--line-height: 1.3333;
+  --text-button--letter-spacing: 0.18em;
+  --text-button--font-weight: 700;
+
+  --text-nav: 0.6875rem;                       /* 11px nav links and small buttons, uppercase */
+  --text-nav--line-height: 1.5;
+  --text-nav--letter-spacing: 0.2em;
+  --text-nav--font-weight: 700;
+
+  --text-legal: 0.6875rem;                     /* 11px footer copyright, uppercase, ink/45 */
+  --text-legal--line-height: 1.5;
+  --text-legal--letter-spacing: 0.18em;
+  --text-legal--font-weight: 400;
+
+  /* Letter-spacing for use on its own */
+  --tracking-eyebrow: 0.28em;
+  --tracking-label: 0.2em;
+  --tracking-button: 0.18em;
+  --tracking-badge: 0.05em;
+  --tracking-display: -0.035em;
+  --tracking-display-tight: -0.05em;
+
+  /* ---------- Layout ----------
+     Spacing in the design (12, 16, 24, 32, 36, 40, 48, 56, 64, 80, 96, 112,
+     128, 160) all sit on Tailwind's default 4px scale. Named values below
+     cover the page frame. */
+  --container-site: 1600px;    /* max-w-site: page content width */
+  --spacing-gutter: 5rem;      /* 80px: px-gutter page side padding */
+  --spacing-section: 8rem;     /* 128px: py-section */
+  --spacing-section-lg: 10rem; /* 160px: py-section-lg */
+  --spacing-header: 5rem;      /* 80px: h-header sticky header */
+
+  /* ---------- Effects ---------- */
+  --shadow-brand: 0 22px 48px -22px rgb(166 30 35 / 0.5); /* WhatsApp button */
+  --shadow-card: 0 1px 2px rgb(20 17 16 / 0.04), 0 18px 40px -24px rgb(20 17 16 / 0.2); /* portal preview cards */
+  --blur-header: 12px;                                    /* backdrop-blur-header */
+
+  /* ---------- Motion ---------- */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-in: fade-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-menu-in: menu-in 0.25s ease-out both;
+  --animate-hero-zoom: hero-zoom 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes menu-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes hero-zoom {
+    from { transform: scale(1.06); }
+    to { transform: scale(1); }
+  }
+
+  /* Radius: the design uses square corners throughout. Default rounded-*
+     utilities remain available but are not part of the brand. */
+}
+
+@layer base {
+  html {
+    color-scheme: light; /* light-only design */
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-variation-settings: "opsz" 14; /* DM Sans optical size used across the design */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* ---------- Scroll reveal ----------
+   Applied by components/ui/Reveal.tsx. Elements start hidden and lift into place
+   the first time they enter the viewport. The root layout carries a <noscript>
+   override so content is never hidden without JavaScript. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
