@@ -25,11 +25,10 @@ export const mainNav: NavItem[] = [
   { label: "Client Hub", href: "/client-area" },
 ];
 
-// "Our Network" dropdown in the header and footer column. No pages exist for
-// these in the Figma file, so they stay as placeholders.
+// "Our Network" dropdown in the header and footer column: the sister sites.
 export const networkLinks: NavItem[] = [
-  { label: "Cube Academy", href: "#" },
-  { label: "Cube Partners", href: "#" },
+  { label: "Cube Academy", href: "https://www.cubeacademy.co.uk" },
+  { label: "Cube Partners", href: "https://www.cubeandpartners.co.uk" },
 ];
 
 // Secure client portal login. The design has no URL for it yet; replace "#" when known.

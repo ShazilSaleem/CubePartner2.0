@@ -8,13 +8,13 @@ const network = [
     name: "Cube Partners",
     text: "Cube Partners connects businesses to achieve extraordinary results.",
     logo: "/images/cube-partner-purple.svg",
-    href: "#",
+    href: "https://www.cubeandpartners.co.uk",
   },
   {
     name: "Cube Academy",
     text: "Learning and development for the next generation of professionals.",
     logo: "/images/cube-academy-blue.svg",
-    href: "#",
+    href: "https://www.cubeacademy.co.uk",
   },
 ];
 
