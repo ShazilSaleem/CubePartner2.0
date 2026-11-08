@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Faq } from "@/components/about/Faq";
-import { Platforms } from "@/components/about/Platforms";
 import { TeamSection } from "@/components/about/TeamSection";
 import { Testimonials } from "@/components/about/Testimonials";
 import { Values } from "@/components/about/Values";
-import { Mission } from "@/components/sections/Mission";
-import { OfficePhotos } from "@/components/sections/OfficePhotos";
+import { MissionStatement } from "@/components/home/MissionStatement";
+import { Stats } from "@/components/home/Stats";
+import { Network } from "@/components/sections/Network";
 import { PageHero } from "@/components/sections/PageHero";
-import { officePhotos } from "@/lib/site";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -19,24 +19,21 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About Cube"
-        decor="left"
         title={
           <>
-            Our story,
-            <br />
-            <span className="text-brand">your success</span>
+            Our story, <span className="text-brand">your success</span>
           </>
         }
         lead="Discover the people, values and vision behind our firm."
-        cta={{ label: "Explore more", href: "#team" }}
-        aside={<OfficePhotos images={officePhotos} />}
+        actions={<Button href="/contact">Contact us now</Button>}
       />
       <TeamSection />
-      <Mission />
+      <MissionStatement />
       <Values />
-      <Platforms />
       <Testimonials />
+      <Stats />
       <Faq />
+      <Network />
     </>
   );
 }

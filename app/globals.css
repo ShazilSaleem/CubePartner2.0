@@ -25,6 +25,18 @@
   --color-ink-muted: #655f5e;         /* secondary text in the Client Area portal preview */
   --color-surface-light: #f8f6f6;     /* avatar and icon tile background in the portal preview */
 
+  /* Added with the 06 Nov 2026 redesign ("UPDATED DESIGN 06 NOV 2026", node 1366:18962) */
+  --color-brand-dark: #800d14;        /* hover state of brand buttons */
+  --color-slate: #596571;             /* lead and intro paragraphs */
+  --color-card: #f4f4f4;              /* home "Tailor made services" cards */
+  --color-footer: #fcfbfe;            /* footer background */
+  --color-footer-ink: #11131f;        /* footer column headings */
+  --color-footer-text: #6a6b75;       /* footer links and copy */
+  --color-footer-muted: #a4b0ba;      /* footer disclaimer */
+  --color-footer-border: #dddde6;     /* footer bottom rule */
+  --color-accent-orange-light: #fff4ea; /* light tint of Accents/Orange: contact form, deadline hover */
+  --color-grid: #ebe8e7;              /* light grid lines: service and testimonial grids */
+
   /* ---------- Font families ----------
      Loaded in app/layout.tsx via next/font and exposed as CSS variables. */
   --font-display: var(--font-outfit), "Outfit", ui-sans-serif, system-ui, sans-serif;
@@ -141,6 +153,46 @@
   --text-legal--line-height: 1.5;
   --text-legal--letter-spacing: 0.18em;
   --text-legal--font-weight: 400;
+
+  /* ---------- Redesign type scale (06 Nov 2026) ----------
+     Headings moved from uppercase ExtraBold to sentence-case SemiBold/Medium. */
+  --text-hero: 4.5rem;                         /* 72px home H1, Outfit SemiBold, sentence case */
+  --text-hero--line-height: 1.0194;
+  --text-hero--font-weight: 600;
+
+  --text-title: 3.625rem;                      /* 58px section headings, Outfit Medium */
+  --text-title--line-height: 1.0793;
+  --text-title--font-weight: 500;
+
+  --text-title-lg: 3.875rem;                   /* 62px "One network." heading, Outfit Medium */
+  --text-title-lg--line-height: 1.06;
+  --text-title-lg--font-weight: 500;
+
+  --text-mission: 3rem;                        /* 48px mission statement, Outfit Regular */
+  --text-mission--line-height: 1.15;
+  --text-mission--letter-spacing: -0.025em;
+  --text-mission--font-weight: 400;
+
+  --text-figure: 4.5rem;                       /* 72px statistics, Outfit SemiBold */
+  --text-figure--line-height: 1;
+  --text-figure--letter-spacing: -0.05em;
+  --text-figure--font-weight: 600;
+
+  --text-subtitle: 1.5rem;                     /* 24px "01 / New Clients", Outfit SemiBold */
+  --text-subtitle--line-height: 1.3333;
+  --text-subtitle--letter-spacing: -0.035em;
+  --text-subtitle--font-weight: 600;
+
+  --text-card-title: 1rem;                     /* 16px card titles, Outfit Bold, uppercase */
+  --text-card-title--line-height: 1.5;
+  --text-card-title--letter-spacing: -0.03em;
+  --text-card-title--font-weight: 700;
+
+  --text-intro: 1.125rem;                      /* 18px / 32px hero lead, DM Sans, slate */
+  --text-intro--line-height: 1.7778;
+
+  --text-copy: 1rem;                           /* 16px / 28px section intros, DM Sans, slate */
+  --text-copy--line-height: 1.75;
 
   /* Letter-spacing for use on its own */
   --tracking-eyebrow: 0.28em;

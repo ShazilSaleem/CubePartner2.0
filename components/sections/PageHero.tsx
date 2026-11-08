@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -7,60 +7,71 @@ import { cn } from "@/lib/cn";
 type PageHeroProps = {
   eyebrow: string;
   title: React.ReactNode;
-  lead?: string;
-  cta?: { label: string; href: string };
-  /** Which corner the faint rotated square sits in. */
-  decor?: "left" | "right";
-  /** Optional right-hand column (5 of 12 grid columns on desktop). */
-  aside?: React.ReactNode;
+  lead?: React.ReactNode;
+  /** Buttons row under the lead. */
+  actions?: React.ReactNode;
+  /** Background photo, shown faded and desaturated on the right 60% of the hero. */
+  image?: string;
+  imagePosition?: string;
+  /** Extra content under the actions (Client Hub section tabs). */
   children?: React.ReactNode;
+  className?: string;
 };
 
-/** Inner-page hero: eyebrow, 96px uppercase H1, lead paragraph, primary CTA, decorative square. */
-export function PageHero({ eyebrow, title, lead, cta, decor = "right", aside, children }: PageHeroProps) {
+/**
+ * Inner-page hero from the 06 Nov 2026 redesign (Services, About, Contact, Client Hub):
+ * 602px tall, faded photo from x=572 to the right edge, white gradient over its left side.
+ */
+export function PageHero({
+  eyebrow,
+  title,
+  lead,
+  actions,
+  image = "/images/hero-meeting.jpg",
+  imagePosition = "center",
+  children,
+  className,
+}: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-white py-20 lg:py-section">
-      <div
-        aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute flex items-center justify-center",
-          decor === "right" ? "-top-[139px] -right-[171px] size-[546px]" : "-top-[151px] -left-[151px] size-[498px]",
-        )}
-      >
-        <div
-          className={cn(
-            "rotate-12 border-[40px] border-surface opacity-5",
-            decor === "right" ? "size-[460px]" : "size-[420px]",
-          )}
+    <section className={cn("relative overflow-hidden bg-white", className)}>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 left-[39.7%] opacity-[0.14]">
+        <Image
+          src={image}
+          alt=""
+          fill
+          priority
+          sizes="60vw"
+          style={{ objectPosition: imagePosition }}
+          className="animate-hero-zoom object-cover grayscale"
         />
       </div>
-      <Container className={cn("relative", aside ? "grid gap-8 lg:grid-cols-12" : undefined)}>
-        <div className={cn("flex flex-col items-start", aside ? "lg:col-span-7" : "max-w-[768px]")}>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white via-white via-48% to-white/0"
+      />
+
+      <Container className="relative flex min-h-[602px] flex-col justify-center py-24">
+        <div className="flex max-w-[768px] flex-col items-start">
           <Reveal>
             <Eyebrow className="pt-1">{eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={100}>
-            <h1 className="pt-8 font-display text-display-sm uppercase text-ink max-lg:text-[clamp(2.5rem,9vw,6rem)]">
+            <h1 className="pt-8 font-display text-hero text-ink max-lg:text-[clamp(2.5rem,8vw,4.5rem)]">
               {title}
             </h1>
           </Reveal>
           {lead && (
             <Reveal delay={200}>
-              <p className="max-w-[448px] pt-8 text-lead leading-tight text-ink/70">{lead}</p>
+              <div className="max-w-[653px] pt-8 text-intro text-slate">{lead}</div>
             </Reveal>
           )}
-          {cta && (
-            <Reveal delay={300} className="pt-8">
-              <Button href={cta.href}>{cta.label}</Button>
+          {actions && (
+            <Reveal delay={300} className="flex flex-wrap gap-px pt-8">
+              {actions}
             </Reveal>
           )}
-          {children}
         </div>
-        {aside && (
-          <Reveal delay={200} className="lg:col-span-5">
-            {aside}
-          </Reveal>
-        )}
+        {children}
       </Container>
     </section>
   );

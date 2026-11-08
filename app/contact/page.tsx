@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Consultation } from "@/components/contact/Consultation";
-import { ContactDetails } from "@/components/contact/ContactDetails";
-import { OfficePhotos } from "@/components/sections/OfficePhotos";
+import { OfficeMap } from "@/components/contact/OfficeMap";
+import { SayHello } from "@/components/contact/SayHello";
 import { PageHero } from "@/components/sections/PageHero";
-import { officePhotos } from "@/lib/site";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Cube Accountants in Manchester for expert accounting advice and a free consultation.",
+    "Get in touch with Cube Accountants in Manchester by email, phone or WhatsApp, or send us a message.",
 };
 
 export default function ContactPage() {
@@ -18,19 +17,16 @@ export default function ContactPage() {
         eyebrow="Contact"
         title={
           <>
-            Let&apos;s connect
-            <br />
-            <span className="text-brand">&amp;</span>
-            <br />
-            <span className="text-brand">collaborate</span>
+            Let&apos;s connect &amp; <span className="text-brand">collaborate</span>
           </>
         }
         lead="Have questions or need expert advice? Our team is here to guide you through every financial challenge. Reach out today, and let's build a successful future together."
-        cta={{ label: "Contact Us now", href: "#consultation" }}
-        aside={<OfficePhotos images={officePhotos} />}
+        actions={<Button href="#say-hello">Contact us now</Button>}
       />
-      <ContactDetails />
-      <Consultation />
+      <div id="say-hello" className="scroll-mt-20">
+        <SayHello />
+      </div>
+      <OfficeMap />
     </>
   );
 }

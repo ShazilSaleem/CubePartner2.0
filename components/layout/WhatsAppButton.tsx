@@ -9,7 +9,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed right-6 bottom-6 z-40 flex size-14 items-center justify-center bg-brand shadow-brand transition-colors hover:bg-ink"
+      className="fixed right-6 bottom-6 z-40 flex size-14 items-center justify-center bg-brand shadow-brand transition-colors hover:bg-brand-dark"
     >
       <Image src="/icons/icon-whatsapp.svg" alt="" width={24} height={24} className="size-6" />
     </a>

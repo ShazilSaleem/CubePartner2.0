@@ -1,51 +1,56 @@
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const steps = [
   {
-    index: "01",
-    title: "Discovery call",
-    text: "We listen first — your goals, your pressures, your numbers.",
+    title: "Chartered & qualified",
+    text: "ICAEW regulated accountants, led personally by a partner.",
+    link: { label: "Meet the team", href: "#team" },
   },
   {
-    index: "02",
-    title: "Tailored proposal",
-    text: "A fixed scope and fixed fee, with no surprises.",
+    title: "Sector knowledge",
+    text: "We know the numbers that matter in your industry.",
+    link: { label: "Our sectors", href: "#sectors" },
   },
   {
-    index: "03",
-    title: "Onboarding",
-    text: "We handle the handover from your previous accountant.",
+    title: "Fixed monthly fees",
+    text: "One agreed price. No hourly billing, no surprise invoices.",
+    link: { label: "Get a quote", href: "#quote" },
   },
   {
-    index: "04",
-    title: "Ongoing support",
-    text: "Proactive advice all year, not just at year end.",
+    title: "Always reachable",
+    text: "Email, phone and WhatsApp support — with a 24 hour response.",
+    link: { label: "Cube support", href: "#support" },
   },
 ];
 
+/** "How we work with you": four brand-ruled points, each scrolling to its section below. */
 export function Process() {
   return (
-    <section className="bg-surface py-20 lg:py-section">
+    <section className="bg-surface py-20 lg:py-28">
       <Container className="flex flex-col gap-16">
-        <Reveal className="flex flex-col gap-6 pt-1">
-          <Eyebrow>Process</Eyebrow>
-          <h2 className="font-display text-h2 uppercase text-ink max-lg:text-[clamp(2.5rem,7vw,4.5rem)]">
-            How we work
-            <br />
-            with you
-          </h2>
-        </Reveal>
-        <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading eyebrow="Process" title="How we work with you" />
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
-            <Reveal key={step.index} as="li" delay={i * 120} className="flex flex-col gap-3 border-t-2 border-brand pt-6">
-              <span className="font-display text-numeral-lg text-brand">{step.index}</span>
-              <h3 className="pt-1 font-display text-h4 leading-7 uppercase text-ink">{step.title}</h3>
-              <p className="text-body-tight text-ink/60">{step.text}</p>
+            <Reveal key={step.title} delay={i * 90} className="flex flex-col border-t-2 border-brand pt-7">
+              <p aria-hidden="true" className="font-display text-numeral-lg text-brand">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="pt-5 font-display text-card-title uppercase text-ink">{step.title}</h3>
+              <p className="max-w-[290px] pt-3 text-body-tight text-ink/70">{step.text}</p>
+              <a
+                href={step.link.href}
+                className="group mt-5 inline-flex items-center gap-1.5 self-start font-display text-eyebrow uppercase text-brand"
+              >
+                {step.link.label}
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-0.5">
+                  ↓
+                </span>
+              </a>
             </Reveal>
           ))}
-        </ol>
+        </div>
       </Container>
     </section>
   );

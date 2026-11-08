@@ -1,68 +1,98 @@
-import { ServiceCard } from "@/components/sections/ServiceCard";
+import {
+  BriefcaseBusiness,
+  Building2,
+  Calculator,
+  ChartColumn,
+  ClipboardCheck,
+  FileText,
+  Landmark,
+  Wallet,
+  type LucideIcon,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const services = [
+const services: { title: string; text: string; icon: LucideIcon }[] = [
   {
-    index: "01",
-    title: "Accounts",
-    icon: "/icons/icon-service-accounts.svg",
-    text: "Year end accounts prepared accurately and on time, with clear commentary on what the numbers mean for your business.",
+    title: "Account",
+    text: "Year end accounts prepared accurately and on time, with clarity on what the numbers mean.",
+    icon: ChartColumn,
   },
   {
-    index: "02",
     title: "Audit",
-    icon: "/icons/icon-service-audit.svg",
-    text: "Streamlined statutory and voluntary audits with transparent progress tracking and minimal disruption.",
+    text: "Statutory and voluntary audits with transparent progress tracking and minimal disruption.",
+    icon: ClipboardCheck,
   },
   {
-    index: "03",
     title: "Business Advisory",
-    icon: "/icons/icon-service-business-advisory.svg",
-    text: "Data driven decision making, scenario analysis and goal tracking to help your business grow with confidence.",
+    text: "Forecasting, scenario planning and goal tracking to help your business grow with confidence.",
+    icon: BriefcaseBusiness,
   },
   {
-    index: "04",
     title: "Payroll",
-    icon: "/icons/icon-service-payroll.svg",
-    text: "Fully managed payroll, RTI submissions, pensions auto-enrolment and payslip distribution.",
+    text: "Fully managed payroll, RTI submissions, pensions auto-enrolment and payslips.",
+    icon: Wallet,
   },
   {
-    index: "05",
     title: "Tax Planning",
-    icon: "/icons/icon-service-tax-planning.svg",
-    text: "Personal and corporate tax planning that keeps you compliant while making the most of available reliefs.",
+    text: "Personal and corporate tax planning that keeps you compliant and uses every relief.",
+    icon: Calculator,
   },
   {
-    index: "06",
     title: "Bookkeeping & VAT",
-    icon: "/icons/icon-service-bookkeeping-vat.svg",
-    text: "Cloud bookkeeping, Making Tax Digital VAT returns and real time visibility of your position.",
+    text: "Cloud bookkeeping and Making Tax Digital VAT returns with real-time visibility.",
+    icon: FileText,
   },
   {
-    index: "07",
     title: "Company Secretarial",
-    icon: "/icons/icon-service-company-secretarial.svg",
-    text: "Company formations, confirmation statements and Companies House filings handled for you.",
+    text: "Company formations, confirmation statements and Companies House filings.",
+    icon: Landmark,
   },
   {
-    index: "08",
     title: "Sector Specialists",
-    icon: "/icons/icon-service-sector-specialists.svg",
-    text: "Healthcare, legal, property, transport, catering, contractors and freelancers — we know your sector.",
+    text: "Care, property, healthcare, travel, retail and many more professional services.",
+    icon: Building2,
   },
 ];
 
+/** "What we do": eight service cards, 4 × 2, on hairline borders. */
 export function ServicesGrid() {
   return (
-    <section className="pb-20 lg:pb-section">
-      <Container>
-        <div className="grid border-t border-l border-surface/14 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, i) => (
-            <Reveal key={service.index} delay={(i % 4) * 90} className="flex">
-              <ServiceCard as="h2" className="min-h-[320px]" {...service} />
-            </Reveal>
-          ))}
+    <section className="py-20 lg:py-28">
+      <Container className="flex flex-col gap-16">
+        <SectionHeading eyebrow="Our services" title="What we do" />
+        <div className="grid border-t border-l border-grid sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service, i) => {
+            const Icon = service.icon;
+            return (
+              <Reveal
+                key={service.title}
+                delay={(i % 4) * 90}
+                className="group flex min-h-[288px] flex-col border-r border-b border-grid p-10 transition-colors duration-300 hover:bg-brand"
+              >
+                <div className="flex items-start justify-between">
+                  <Icon
+                    aria-hidden="true"
+                    className="size-7 text-brand transition-colors duration-300 group-hover:text-white"
+                    strokeWidth={1.75}
+                  />
+                  <p
+                    aria-hidden="true"
+                    className="font-display text-numeral text-ink/15 transition-colors duration-300 group-hover:text-white"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                </div>
+                <h3 className="pt-14 font-display text-card-title uppercase text-ink transition-colors duration-300 group-hover:text-white">
+                  {service.title}
+                </h3>
+                <p className="pt-4 text-body-tight text-ink/70 transition-colors duration-300 group-hover:text-white">
+                  {service.text}
+                </p>
+              </Reveal>
+            );
+          })}
         </div>
       </Container>
     </section>

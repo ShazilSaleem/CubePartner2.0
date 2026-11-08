@@ -12,18 +12,16 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-section">
+    <section className="py-20 lg:py-28">
       <Container className="flex flex-col gap-12 lg:flex-row lg:items-start">
-        <Reveal className="flex flex-col gap-6 pt-1 lg:w-[420px] lg:shrink-0 lg:pb-24">
-          <Eyebrow>FAQ</Eyebrow>
-          <h2 className="font-display text-h2-md leading-[0.9] uppercase text-ink max-lg:text-[clamp(2.25rem,6vw,3.75rem)]">
-            Your
-            <br />
-            questions
+        <Reveal className="flex flex-col gap-6 pt-1 lg:w-[420px] lg:shrink-0">
+          <Eyebrow className="pt-1">FAQ</Eyebrow>
+          <h2 className="font-display text-title text-ink max-lg:text-[clamp(2.25rem,6vw,3.625rem)]">
+            Your questions
             <br />
             <span className="text-brand">answered.</span>
           </h2>
-          <p className="max-w-[384px] text-body text-ink/60">
+          <p className="max-w-[357px] text-copy text-slate">
             Let&apos;s do our best to answer your most frequently asked questions.
           </p>
         </Reveal>
@@ -42,7 +40,7 @@ export function Faq() {
                     onClick={() => setOpenIndex(open ? null : index)}
                     className="group flex w-full items-center justify-between gap-6 py-6 text-left"
                   >
-                    <span className="font-display text-lg leading-7 font-bold tracking-[-0.025em] uppercase text-ink transition-colors duration-300 group-hover:text-brand">
+                    <span className="font-display text-lg leading-[23px] font-medium text-ink transition-colors duration-300 group-hover:text-brand">
                       {item.question}
                     </span>
                     <Image
@@ -64,7 +62,7 @@ export function Faq() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-[640px] pb-6 text-body text-ink/65">{item.answer}</p>
+                    <p className="max-w-[640px] pb-6 text-copy text-slate">{item.answer}</p>
                   </div>
                 </div>
               </div>

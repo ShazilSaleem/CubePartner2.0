@@ -1,53 +1,57 @@
-import Image from "next/image";
+import { Star } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
+// Client names are "xxxxxx" in the Figma frame; replace with real attributions.
 const testimonials = [
   {
-    quote: "\"Nowadays, it isn't great uncommon to see lenders rapidly adopting.\"",
-    name: "David Gilroy",
+    quote:
+      "Cube have looked after our accounts for over 8 years. They understand how the sector works & explain everything in plain English.",
+    name: "xxxxxx - Director",
   },
   {
-    quote: "\"Nowadays, it isn't great uncommon to see lenders rapidly adopting.\"",
-    name: "Kyle Silverdale",
+    quote:
+      "Our ATOL reporting used to be a stressful time of year. Cube made the process clear and kept us on track for the deadline.",
+    name: "xxxxxx - Director",
   },
   {
-    quote: "\"Nowadays, it isn't great uncommon to see lenders rapidly adopting.\"",
-    name: "Millie Holland",
+    quote:
+      "Quick to respond and always happy to talk things through. It feels like dealing with a person rather than a firm.",
+    name: "xxxxxx - Director",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section className="pt-20 lg:pt-section">
+    <section className="py-20 lg:py-28">
       <Container className="flex flex-col gap-14">
-        <Reveal className="flex flex-col gap-6 pt-1">
-          <Eyebrow>Testimonials</Eyebrow>
-          <h2 className="max-w-[672px] font-display text-h2 uppercase text-ink max-lg:text-[clamp(2.5rem,7vw,4.5rem)]">
-            Trusted by our
-            <br />
-            clients
-          </h2>
-          <p className="max-w-[576px] text-body text-ink/60">
-            Join us to access resources, a supportive community, and growth opportunities with a
-            leading accountancy firm.
-          </p>
-        </Reveal>
+        <SectionHeading
+          eyebrow="Testimonials"
+          title={
+            <>
+              Trusted by
+              <br />
+              our clients
+            </>
+          }
+          intro="Join us to access resources, a supportive community, and growth opportunities with a leading accountancy firm."
+          introClassName="max-w-[559px]"
+        />
 
-        <div className="grid border-t border-l border-surface/14 md:grid-cols-3">
+        <div className="grid gap-px border border-grid bg-grid md:grid-cols-3">
           {testimonials.map((testimonial, i) => (
             <Reveal
-              key={testimonial.name}
+              key={testimonial.quote}
               as="figure"
               delay={i * 120}
-              className="flex min-h-[224px] flex-col justify-between gap-6 border-r border-b border-surface/14 p-10 transition-colors duration-300 hover:bg-surface/60"
+              className="flex min-h-[279px] flex-col justify-between gap-6 bg-white p-10 transition-colors duration-300 hover:bg-surface"
             >
-              <blockquote className="text-xl leading-[1.375] font-medium text-ink">{testimonial.quote}</blockquote>
-              <figcaption className="flex flex-col gap-4">
-                <div className="flex gap-1" role="img" aria-label="Rated 5 out of 5 stars">
+              <blockquote className="text-lg leading-[27.5px] text-ink">&ldquo;{testimonial.quote}&rdquo;</blockquote>
+              <figcaption className="flex flex-col gap-3">
+                <div className="flex gap-1 text-brand" role="img" aria-label="Rated 5 out of 5 stars">
                   {Array.from({ length: 5 }, (_, star) => (
-                    <Image key={star} src="/icons/icon-star.svg" alt="" width={14} height={14} className="size-3.5" />
+                    <Star key={star} aria-hidden="true" className="size-3.5 fill-current" strokeWidth={0} />
                   ))}
                 </div>
                 <p className="font-display text-eyebrow uppercase text-ink/50">{testimonial.name}</p>

@@ -5,9 +5,9 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function Stats() {
   return (
-    <section className="py-20 lg:py-section">
+    <section className="pb-20 lg:pt-5 lg:pb-28">
       <Container className="flex flex-col gap-14 lg:flex-row lg:items-end">
-        <StatsGrid className="flex-1" />
+        <StatsGrid className="flex-1 lg:pb-6" />
         <Reveal delay={200} className="relative h-[380px] w-full shrink-0 overflow-hidden lg:w-[520px]">
           <Image
             src="/images/hero-meeting.jpg"

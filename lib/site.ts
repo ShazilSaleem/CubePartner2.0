@@ -9,6 +9,9 @@ export const site = {
   email: "contact@cubeaccountants.com",
   address: ["Manchester Office:", "First Floor", "Parkway Two", "Manchester", "M14 7HR"],
   officeAddress: "Suite Twelve, First Floor, Parkway Two, Manchester, M14 7HR",
+  footerAddress: "Parkway Two, Manchester, M14 7HR",
+  officeAddressShort: "First Floor, Parkway Two, Manchester, M14 7HR",
+  clientEmail: "client@cubeaccountants.com",
   companyNumber: "09408587",
 };
 
@@ -19,34 +22,15 @@ export const mainNav: NavItem[] = [
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Client Area", href: "/client-area" },
+  { label: "Client Hub", href: "/client-area" },
 ];
 
-// Present in the design header but with no page in the Figma file.
-export const secondaryNav: NavItem[] = [
-  { label: "Partners", href: "#" },
-  { label: "Academy", href: "#" },
+// "Our Network" dropdown in the header and footer column. No pages exist for
+// these in the Figma file, so they stay as placeholders.
+export const networkLinks: NavItem[] = [
+  { label: "Cube Academy", href: "#" },
+  { label: "Cube Partners", href: "#" },
 ];
 
-export const footerLinks: NavItem[] = [
-  { label: "About Us", href: "/about" },
-  { label: "Careers", href: "#" },
-  { label: "Contact us", href: "/contact" },
-  { label: "Services", href: "/services" },
-  { label: "Forms & Templates", href: "#" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms & Conditions", href: "#" },
-];
-
-export const socialLinks = [
-  { label: "Facebook", href: "#", icon: "/icons/icon-social-1.svg" },
-  { label: "LinkedIn", href: "#", icon: "/icons/icon-social-2.svg" },
-  { label: "Twitter", href: "#", icon: "/icons/icon-social-3.svg" },
-];
-
-/** Three office photos used in the About and Contact page heroes. */
-export const officePhotos = [
-  { src: "/images/about-office-1.jpg", alt: "Cube Accountants Manchester office" },
-  { src: "/images/about-office-2.jpg", alt: "Cube Accountants Manchester office" },
-  { src: "/images/about-office-3.jpg", alt: "Cube Accountants Manchester office" },
-];
+// Secure client portal login. The design has no URL for it yet; replace "#" when known.
+export const portalUrl = "#";

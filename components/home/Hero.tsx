@@ -5,9 +5,9 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
 const facts = [
-  { value: "ICAEW", label: "Chartered" },
-  { value: "500+", label: "Clients" },
-  { value: "2015", label: "Established" },
+  { value: "ICAEW", label: ["Chartered", "Accountants"] },
+  { value: "Personal", label: ["Partner-led", "Service"] },
+  { value: "Established", label: ["Since", "2015"] },
 ];
 
 export function Hero() {
@@ -36,18 +36,20 @@ export function Hero() {
       </div>
       <div aria-hidden="true" className="absolute bottom-0 left-0 h-1 w-1/3 bg-brand" />
 
-      <Container className="relative flex min-h-[738px] flex-col justify-end pt-28 pb-20">
+      <Container className="relative flex min-h-[771px] flex-col justify-end py-24">
         <div className="flex w-full max-w-[768px] flex-col gap-[30px]">
           <Reveal>
             <Eyebrow className="pt-1">Chartered Accountants · Manchester</Eyebrow>
           </Reveal>
           <Reveal delay={100}>
-            <h1 className="max-w-[827px] font-display text-display uppercase text-ink max-lg:text-[clamp(2.75rem,10vw,7rem)]">
-              Your trusted partner in <span className="text-brand">accounting</span>
+            <h1 className="font-display lg:w-[828px] text-hero text-ink max-lg:text-[clamp(2.5rem,8vw,4.5rem)]">
+              A trusted partner
+              <br />
+              in your growing <span className="text-brand">business</span>
             </h1>
           </Reveal>
           <Reveal delay={220}>
-            <p className="max-w-[448px] text-lead text-ink/75">
+            <p className="max-w-[448px] text-intro text-slate">
               Cube Accountants offers a personal and professional service, advising clients on a range
               of financial solutions.
             </p>
@@ -59,21 +61,29 @@ export function Hero() {
             </Button>
           </Reveal>
 
-          <Reveal delay={440} className="grid border-y border-ink/15 sm:grid-cols-[1.4fr_2fr]">
-            <div className="flex flex-col gap-[7px] py-5 sm:border-r sm:border-ink/15 sm:pr-6">
+          <Reveal
+            delay={440}
+            className="grid border border-ink/15 px-4 sm:grid-cols-[1fr_auto]"
+          >
+            <div className="flex flex-col gap-[7px] py-5 sm:pr-6">
               <Eyebrow>Location</Eyebrow>
-              <p className="font-display text-label-lg uppercase text-ink">
-                Central Manchester · United Kingdom
-              </p>
+              <p className="font-display text-label-lg uppercase text-ink">Manchester · United Kingdom</p>
             </div>
-            <div className="flex overflow-x-auto max-sm:border-t max-sm:border-ink/15 sm:pl-2">
-              {facts.map((fact) => (
+            <div className="flex max-sm:-mx-4 max-sm:border-t max-sm:border-ink/15 sm:pl-2">
+              {facts.map((fact, i) => (
                 <div
                   key={fact.value}
-                  className="flex flex-1 flex-col items-center gap-1 border-l border-ink/15 px-2 pt-5 pb-12 text-center sm:w-[148px] sm:flex-none"
+                  className={
+                    "flex flex-1 flex-col items-center gap-1 border-ink/15 px-2 pt-5 pb-6 text-center sm:flex-none sm:border-l " +
+                    (i === 0 ? "sm:w-[162px]" : "border-l sm:w-[148px]")
+                  }
                 >
                   <p className="font-display text-base leading-6 font-black uppercase text-ink">{fact.value}</p>
-                  <p className="font-display text-eyebrow uppercase text-ink/45">{fact.label}</p>
+                  <p className="font-display text-eyebrow uppercase text-ink/45">
+                    {fact.label[0]}
+                    <br />
+                    {fact.label[1]}
+                  </p>
                 </div>
               ))}
             </div>
